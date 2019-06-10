@@ -2,10 +2,10 @@
 SHELL = /bin/bash
 .SHELLFLAGS += -e
 
-KVERSION_SHORT ?= 4.9.0-8
+KVERSION_SHORT ?= 4.9.0-9
 KVERSION ?= $(KVERSION_SHORT)-amd64
-KERNEL_VERSION ?= 4.9.110
-KERNEL_SUBVERSION ?= 3+deb9u6
+KERNEL_VERSION ?= 4.9.168
+KERNEL_SUBVERSION ?= 1+deb9u2
 kernel_procure_method ?= build
 
 LINUX_HEADER_COMMON = linux-headers-$(KVERSION_SHORT)-common_$(KERNEL_VERSION)-$(KERNEL_SUBVERSION)_all.deb
@@ -19,11 +19,11 @@ ifneq ($(kernel_procure_method), build)
 # Downloading kernel
 
 # TBD, need upload the new kernel packages
-LINUX_HEADER_COMMON_URL = "https://sonicstorage.blob.core.windows.net/packages/kernel-public/linux-headers-4.9.0-8-common_4.9.110-3+deb9u2_all.deb?sv=2015-04-05&sr=b&sig=LlKqKecY6MDSwFMTxpKErh7FX1Lrvse2yVt3niYnhds%3D&se=2128-02-24T04%3A47%3A48Z&sp=r"
+LINUX_HEADER_COMMON_URL = "https://sonicstorage.blob.core.windows.net/packages/kernel-public/linux-headers-$(KVERSION_SHORT)-common_$(KERNEL_VERSION)-$(KERNEL_SUBVERSION)_all.deb?sv=2015-04-05&sr=b&sig=kly2kchVaAvaRSolXeLP2%2BKoIJupq2RzaN3nCvlZIK0%3D&se=2128-12-14T21%3A52%3A45Z&sp=r"
 
-LINUX_HEADER_AMD64_URL = "https://sonicstorage.blob.core.windows.net/packages/kernel-public/linux-headers-4.9.0-8-amd64_4.9.110-3+deb9u2_amd64.deb?sv=2015-04-05&sr=b&sig=SfQLjiBPPMcRUOmBPvXq2%2F6SsW3ul9%2FlaROplXdGij0%3D&se=2128-02-24T04%3A48%3A38Z&sp=r"
+LINUX_HEADER_AMD64_URL = "https://sonicstorage.blob.core.windows.net/packages/kernel-public/linux-headers-$(KVERSION_SHORT)-amd64_$(KERNEL_VERSION)-$(KERNEL_SUBVERSION)_amd64.deb?sv=2015-04-05&sr=b&sig=gUahX%2BMmA0X4brlybxlphmu%2FTBvsclIS611iUxtDJOM%3D&se=2128-12-14T21%3A51%3A51Z&sp=r"
 
-LINUX_IMAGE_URL = "https://sonicstorage.blob.core.windows.net/packages/kernel-public/linux-image-4.9.0-8-amd64_4.9.110-3+deb9u2_amd64.deb?sv=2015-04-05&sr=b&sig=PNKGpLjELZem0IacUMM1jU%2Ft5ujoVvUb9JzxrUhE1Wk%3D&se=2128-02-24T04%3A48%3A57Z&sp=r"
+LINUX_IMAGE_URL = "https://sonicstorage.blob.core.windows.net/packages/kernel-public/linux-image-$(KVERSION_SHORT)-amd64_$(KERNEL_VERSION)-$(KERNEL_SUBVERSION)_amd64.deb?sv=2015-04-05&sr=b&sig=QUoD1oTuz%2FQB2DjEchG%2FclBGxNyj4E5z%2FJzZFOpNgu0%3D&se=2128-12-14T21%3A52%3A27Z&sp=r"
 
 $(addprefix $(DEST)/, $(MAIN_TARGET)): $(DEST)/% :
 	# Obtaining the Debian kernel packages
