@@ -109,8 +109,8 @@ index 4e81ff2f4588..96811f7fb22e 100644
 +		.maxlen		= sizeof(int),
 +		.mode		= 0644,
 +		.proc_handler	= proc_dointvec,
-+		.extra1		= (void *)SYSCTL_ZERO,
-+		.extra2		= (void *)SYSCTL_ONE,
++		.extra1		= (void *)&zero,
++		.extra2		= (void *)&one,
 +	},
  	{
  		/* sentinel */
